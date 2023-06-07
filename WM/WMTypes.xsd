@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:wm="https://github.com/Spool5520/XMLSchemas/WM/WMTypes.xsd"
+           targetNamespace="https://github.com/Spool5520/XMLSchemas/WM/WMTypes.xsd"
+           elementFormDefault="qualified">
+
+<xs:simpleType name="goTypeFlags">
+    <xs:restriction base="xs:string">
+        <!-- structure flags -->
+        <xs:enumeration value="none"/>
+        <xs:enumeration value="type_can_connect"/>
+        <xs:enumeration value="type_has_orientation"/>
+        <xs:enumeration value="type_has_direction"/>
+        <xs:enumeration value="type_is_storage"/>
+        <xs:enumeration value="type_is_blocking"/>
+        <xs:enumeration value="type_requires_floor"/>
+        <xs:enumeration value="type_requires_unlock"/>
+        <xs:enumeration value="type_effects_entities"/>
+
+        <!-- floor flags -->
+        <xs:enumeration value="type_requires_subfloor"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="goTypeDef">
+    <xs:sequence>
+        <xs:element name="namespace" type="xs:string"/>
+        <xs:element name="id" type="xs:integer"/>
+        <xs:element name="metadata" type="xs:integer"/>
+        <xs:element name="typeflags" type="wm:goTypeFlags" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+</xs:schema>
